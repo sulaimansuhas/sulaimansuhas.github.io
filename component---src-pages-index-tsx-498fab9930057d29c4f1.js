@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkchez_moi=self.webpackChunkchez_moi||[]).push([[691],{7200:function(e,t,n){n.r(t),n.d(t,{Head:function(){return l}});var c=n(7294);t.default=()=>c.createElement("h1",null,"Welcom");const l=()=>c.createElement("title",null,"Home Page")}}]);
-//# sourceMappingURL=component---src-pages-index-tsx-498fab9930057d29c4f1.js.map
