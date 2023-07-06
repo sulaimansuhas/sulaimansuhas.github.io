@@ -6,11 +6,13 @@ import styled from "styled-components"
 const TextSpan = styled.span`
 `
 const FloatingTip = styled.span`
+border-width:1px;
 z-index: 1;
 border-radius: 6px;
 background-color: rgba(0,0,0,0.75);
 text-align: center;
-padding: 5px 5px;
+white-space: nowrap;
+padding: 3px 5px;
 position: absolute;
 top: 110%;
 left: 50%;
@@ -28,17 +30,24 @@ transition: opacity .3s ease;
 
 
 &:after{
+ position: absolute; 
+transform: translateX(-5px);
+ bottom : 100%;
+ left: 50%;
  content: "";
- position: absolute;
- top: -30%;
- left: 30%;
  border-width: 5px;
   border-style: solid;
-  border-color:transparent transparent rgba(0,0,0,0.75) transparent;
+  border-color:transparent  transparent rgba(0,0,0,0.75) transparent;
   }
 `
 const ParentSpan = styled.span`
 position:relative;
+`
+const ToolTipText = styled.p`
+color: #FFFFFF;
+font-family: "Work Sans";
+text-align: center;
+font-size: 10px;
 `
 
 interface OwnProps {
@@ -54,7 +63,7 @@ export default function ToolTip(props: OwnProps): JSX.Element | null{
 	return(
 		<ParentSpan>
 			<TextSpan>{children}</TextSpan>
-		<FloatingTip>{tip}</FloatingTip>
+		<FloatingTip><ToolTipText>{tip}</ToolTipText></FloatingTip>
 		</ParentSpan>
 	);
 }

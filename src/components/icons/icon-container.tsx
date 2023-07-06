@@ -4,8 +4,7 @@ import { motion } from "framer-motion"
 
 
 interface OwnProps {
-	src : string,
-	title: string,
+	children: React.ReactNode,
 }
 
 
@@ -13,15 +12,10 @@ const Container = styled(motion.div)`
 display:flex;
 flex-direction:column;
 `
-const Caption = styled(motion.p)`
-color: #263D42;
-font-family: "Work Sans";
-`
 
 
 
 export default function IconContainer(props: OwnProps): JSX.Element | null{
-	const {src, title} = props;
 	return(
 		<Container
 			  whileHover={{
@@ -29,8 +23,7 @@ export default function IconContainer(props: OwnProps): JSX.Element | null{
 			  }}
 
 		>
-	               <img src={src} alt="this is about icon" />
-		       <Caption > {title} </Caption>
+			{props.children}
 		</Container>
 	);
 }

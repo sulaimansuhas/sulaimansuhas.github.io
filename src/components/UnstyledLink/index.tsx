@@ -1,7 +1,6 @@
 import styled from "styled-components"
-import { Link } from "gatsby"
 
-const UnstyledLink = styled(Link)`
+const UnstyledLink = styled.a`
 text-decoration: none;
 box-shadow: none;
 `

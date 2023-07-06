@@ -25,7 +25,9 @@ const config: GatsbyConfig = {
           },
         ],
       },
-    },]
+    },
+    `gatsby-plugin-styled-components`,
+  ]
 }
 
 export default config

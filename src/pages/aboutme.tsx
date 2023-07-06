@@ -66,10 +66,10 @@ const AboutPage: React.FC<PageProps> = () => {
 			  <TitleBar/>
 			  <BodyContainer>
 
-				  <Copy>Currently in <ToolTip tip="🏴">Edinburgh, Scotland</ToolTip></Copy>
+				  <Copy>Currently in <ToolTip tip="&#x1F3F4;&#xE0067;&#xE0062;&#xE0073;&#xE0063;&#xE0074;&#xE007F;">Edinburgh, Scotland</ToolTip></Copy>
 				  <Copy>
-	  I have extensive experience in full stack development and am currently learning as much as possible about low-latency networking and storage. Any discussions about team planning, optimisation, and management are welcome! </Copy>
-			  <Copy> Outside of work you can find me out and about being active, reading about the natural world, or people watching. </Copy>
+	  I have extensive experience in full stack development and am currently learning about low-latency networking and storage. Any discussions about team planning, optimisation, and management are welcome! </Copy>
+			  <Copy> Outside of work you can find <ToolTip tip="&#x1F94A;">kickboxing</ToolTip>, dancing <ToolTip tip="&#x1F483;">bachata & sala</ToolTip>, or <ToolTip tip="&#x1F440;">people watching.</ToolTip> </Copy>
 			  <EmptySpaceDiv height={66}/>
 
 			  </BodyContainer>

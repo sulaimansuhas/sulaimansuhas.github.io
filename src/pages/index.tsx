@@ -50,6 +50,10 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const Caption = styled(motion.p)`
+color: #263D42;
+font-family: "Work Sans";
+`
 
 
 
@@ -70,9 +74,24 @@ const IndexPage: React.FC<PageProps> = () => {
 	  animate = {{ 
 		       opacity: activeMainPageAnimation ? 1 : 0
   }}>
-	  <UnstyledLocalLink to="/aboutme"><IconContainment src={about} title="about" /></UnstyledLocalLink>
-		       <IconContainment src={resume} title="resume" />
-		                    <IconContainment src={contact} title="contact" />
+       <UnstyledLocalLink to="/aboutme">
+	       <IconContainment>
+		       <img src={about} alt="this is about icon" />
+		       <Caption > about </Caption>
+	       </IconContainment>
+	  </UnstyledLocalLink>
+	<UnstyledLocalLink>
+	       <IconContainment>
+		       <img src={resume} alt="this is resume icon" />
+		       <Caption > resume </Caption>
+	       </IconContainment>
+       </UnstyledLocalLink>
+	<UnstyledLocalLink to="/contact">
+	       <IconContainment>
+		       <img src={contact} alt="this is contact icon" />
+		       <Caption > contact </Caption>
+	       </IconContainment>
+	</UnstyledLocalLink>
   </IconContainer>
 </SmDiv>
 
