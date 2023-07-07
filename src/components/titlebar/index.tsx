@@ -35,7 +35,7 @@ export default function TitleBar (): JSX.Element | null {
 			<ContainingDiv>
 				<UnstyledLocalLink to="/"><Caption>Home</Caption></UnstyledLocalLink>
 				<UnstyledLocalLink to="/aboutme"><Caption>About</Caption></UnstyledLocalLink>
-				<Caption>Resume</Caption>
+				<UnstyledLocalLink to="/resume"><Caption>Resume</Caption></UnstyledLocalLink>
 				<UnstyledLocalLink to="/contact"><Caption>Contact</Caption></UnstyledLocalLink>
 			</ContainingDiv>
 			</>

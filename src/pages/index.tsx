@@ -80,7 +80,7 @@ const IndexPage: React.FC<PageProps> = () => {
 		       <Caption > about </Caption>
 	       </IconContainment>
 	  </UnstyledLocalLink>
-	<UnstyledLocalLink>
+	<UnstyledLocalLink to="/resume">
 	       <IconContainment>
 		       <img src={resume} alt="this is resume icon" />
 		       <Caption > resume </Caption>
