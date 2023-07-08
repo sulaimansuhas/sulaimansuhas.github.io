@@ -38,7 +38,7 @@ const AboutPage: React.FC<PageProps> = () => {
 				  <Copy>Currently in <ToolTip tip={<EmojiStyling>&#x1F3F4;&#xE0067;&#xE0062;&#xE0073;&#xE0063;&#xE0074;&#xE007F;</EmojiStyling>}>Edinburgh, Scotland</ToolTip></Copy>
 				  <Copy>
 	  I am a full stack developer currently learning about low-latency networking and storage. Any discussions about team planning, optimisation, and management are welcome! </Copy>
-			  <Copy> Outside of work you can find me <ToolTip tip={<EmojiStyling>&#x1F94A;</EmojiStyling>}>kickboxing</ToolTip>, dancing <ToolTip tip={<EmojiStyling>&#x1F483;</EmojiStyling>}>Bachata</ToolTip> & <ToolTip tip={<EmojiStyling>&#x1F483;</EmojiStyling>}>Salsa</ToolTip>.</Copy>
+			  <Copy> Outside of work you can find me <ToolTip tip={<EmojiStyling>&#x1F94A;</EmojiStyling>}>Kickboxing</ToolTip>, dancing <ToolTip tip={<EmojiStyling>&#x1F483;</EmojiStyling>}>Bachata</ToolTip> & <ToolTip tip={<EmojiStyling>&#x1F483;</EmojiStyling>}>Salsa</ToolTip>.</Copy>
 
 			  </BodyDiv>
 		  </ContentBox>
