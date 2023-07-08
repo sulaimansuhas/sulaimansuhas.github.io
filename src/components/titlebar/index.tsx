@@ -19,6 +19,13 @@ font-family: "Work Sans";
 font-size: 1.3em;
 margin-block-end: 0px;
 font-weight: lighter;
+transition: text-shadow 0.2s ease;
+
+
+
+&:hover{
+text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+}
 `
 const SelectedCaption = styled(motion.p)`
 color: #263D42;
