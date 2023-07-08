@@ -72,7 +72,7 @@ const ContactPage: React.FC<PageProps> = () => {
 	const [CopyTipText,setCopyTipText] = React.useState(clickToCopyText);
 	return (
 		<BgDiv>
-			<ContentBox animate={{ height: "30vw" }} transition={{ duration: 1 }}>
+			<ContentBox animate={{ height: "auto" }} transition={{ duration: 1 }}>
 				<TitleBar />
 				<BodyDivCentered>
 					<Copy
