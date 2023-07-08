@@ -1,10 +1,11 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import styled from "styled-components"
-import { motion } from "framer-motion"
 
 import TitleBar from "../components/titlebar/index"
 import ToolTip from "../components/tooltips";
+import ContentBox from "../components/contentbox/";
+import BodyDiv from "../components/BoxBodyDiv/";
 
 import typescript from "../assets/icons/typescript.svg"
 import stripe from "../assets/icons/stripe.png"
@@ -27,26 +28,6 @@ display:flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-`
-const SmDiv = styled(motion.div)`
-height: 0%;
-width: 50%;
-border: 5px solid #263D42;
-display:flex;
-flex-direction: column;
-justify-content: flex-start;
-align-items: center;
-overflow: scroll;
-max-height: 90%;
-`
-
-const BodyContainer = styled.div`
-width: 90%;
-display: flex;
-flex-direction:column;
-justify-content: flex-start;
-align-items: center;
-flex-grow:1;
 `
 const HeaderCopy = styled.p`
 color: #263D42;
@@ -71,7 +52,6 @@ font-size: 16px;
 margin-block-start:0em;
 margin-block-end:.5em;
 `
-
 const SubHeaderDiv = styled.div`
 display:flex;
 width: 100%;
@@ -94,30 +74,10 @@ font-size: 10px;
 margin-block-start: 0px;
 margin-block-end: 0px;
 `
-
-const RelevantCourseList = styled.ul`
-margin-block-start: 0px;
-color: #FFFFFF;
-margin: 0;
-padding 0;
-
-& > li {
-margin: 0;
-padding 0;
-}
-`
 const RelevantCoursesDiv = styled.div`
 display: flex;
 flex-direction: column;
 align-items: flex-start;
-`
-
-
-const TextDiv = styled.div`
-display:flex;
-width: 100%;
-flex-direction:row;
-justify-content: flex-start;
 `
 
 const CustomList = styled.ul`
@@ -138,9 +98,9 @@ width:16px;
 const ResumePage: React.FC<PageProps> = () => {
 	return (
 		<BgDiv>
-			<SmDiv animate={{ height: "auto" }} transition={{ duration: 1 }}>
+			<ContentBox animate={{ height: "auto" }} transition={{ duration: 1 }}>
 				<TitleBar />
-				<BodyContainer>
+				<BodyDiv>
                                   <HeaderDiv><HeaderCopy>Work - </HeaderCopy></HeaderDiv>
                                   <SubHeaderDiv><SubHeaderCopy>Intern, CALA Fashion, 2022 March-Dec</SubHeaderCopy></SubHeaderDiv>
                                     <CustomList>
@@ -186,8 +146,8 @@ const ResumePage: React.FC<PageProps> = () => {
                                   <CustomList>
                                   <li><TextCopy>For the University of Edinburgh's ILP course I created a drone navigation program for traversing a defined area, collecting data from air sensors. The program utilizes Java Geometry Packages to abstract the route and generates a GeoJson file to visualize the drone's path. Extensive documentation accompanies the code for clarity and ease of future maintenance.</TextCopy></li>
                                   </CustomList>
-				</BodyContainer>
-			</SmDiv>
+				</BodyDiv>
+			</ContentBox>
 		</BgDiv>
 	)
 }

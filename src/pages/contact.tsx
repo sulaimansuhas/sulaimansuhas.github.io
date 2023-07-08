@@ -1,17 +1,23 @@
 import * as React from "react"
 import styled from "styled-components"
-import { motion } from "framer-motion"
 import type { HeadFC, PageProps } from "gatsby"
 
 import TitleBar from "../components/titlebar/index"
 import ToolTip from "../components/tooltips";
 import UnstyledLink from "../components/UnstyledLink" 
 import IconContainment from "../components/icons/icon-container"
+import ContentBox from "../components/contentbox/";
+import BodyDiv from "../components/BoxBodyDiv/";
 
 
 import linkedin from "../assets/icons/linkedin.svg"
 import github from "../assets/icons/github.svg"
 import copy from "../assets/icons/copy_icon.svg"
+
+
+const BodyDivCentered = styled(BodyDiv)`
+align-items:center;
+`
 
 const BgDiv = styled.div`
 height: 100%;
@@ -25,31 +31,11 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 `
-const SmDiv = styled(motion.div)`
-height: 0%;
-width: 50%;
-border: 5px solid #263D42;
-display:flex;
-flex-direction: column;
-justify-content: flex-start;
-align-items: center;
-overflow: hidden;
-`
 const Copy = styled.p`
 color: #263D42;
 font-family: "Work Sans";
 text-align: center;
 `
-const BodyContainer = styled.div`
-width: 90%;
-display: flex;
-flex-direction:column;
-justify-content: flex-start;
-align-items: center;
-flex-grow:1;
-`
-
-
 const Icon = styled.img`
 height: 50px;
 width: 50px;
@@ -86,9 +72,9 @@ const ContactPage: React.FC<PageProps> = () => {
 	const [CopyTipText,setCopyTipText] = React.useState(clickToCopyText);
 	return (
 		<BgDiv>
-			<SmDiv animate={{ height: "30vw" }} transition={{ duration: 1 }}>
+			<ContentBox animate={{ height: "30vw" }} transition={{ duration: 1 }}>
 				<TitleBar />
-				<BodyContainer>
+				<BodyDivCentered>
 					<Copy
 					> Find/Contact me at:</Copy>
 					<IconTextDiv><UnstyledLink href={"mailto:"+email}><Copy> {email} </Copy></UnstyledLink><ToolTip tip={<ToolTipText>{CopyTipText}</ToolTipText>}><IconContainment><IconNextToText src={copy} onClick={()=>{
@@ -102,8 +88,8 @@ const ContactPage: React.FC<PageProps> = () => {
 					/></IconContainment></ToolTip></IconTextDiv>
 					<UnstyledLink href="https://www.linkedin.com/in/suhas-narreddy-877702202/"><IconContainment><Icon src={linkedin} alt="this is about icon" /></IconContainment></UnstyledLink>
 					<UnstyledLink href="https://github.com/sulaimansuhas"><IconContainment><Icon src={github} alt="this is about icon" /></IconContainment></UnstyledLink>
-				</BodyContainer>
-			</SmDiv>
+				</BodyDivCentered>
+			</ContentBox>
 
 		</BgDiv>
 	)

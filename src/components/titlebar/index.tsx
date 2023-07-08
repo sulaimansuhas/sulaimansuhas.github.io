@@ -4,17 +4,9 @@ import { motion } from "framer-motion"
 
 import  UnstyledLocalLink  from "../UnstyledLocalLink"
 
-
-
-interface OwnProps {
-	percentHeight: string;
-}
-	
-
-
 const ContainingDiv = styled(motion.div)`
 width:100%;
-height: 30%;
+height: auto;
 display: flex;
 flex-direction: row;
 justify-content: space-evenly;
@@ -24,10 +16,8 @@ const Caption = styled(motion.p)`
 color: #263D42;
 font-family: "Work Sans";
 font-size: 1.3em;
+margin-block-end: 0px;
 `
-
-
-
 
 export default function TitleBar (): JSX.Element | null {
 	return(

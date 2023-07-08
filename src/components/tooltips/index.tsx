@@ -28,7 +28,6 @@ visibility: visible;
 transition: opacity .3s ease;
 }
 
-
 &:after{
  position: absolute; 
 transform: translateX(-5px);
@@ -43,15 +42,6 @@ transform: translateX(-5px);
 const ParentSpan = styled.span`
 position:relative;
 `
-const ToolTipText = styled.p`
-color: #FFFFFF;
-font-family: "Work Sans";
-text-align: center;
-font-size: 10px;
-margin-block-start: 0px;
-margin-block-end: 0px;
-`
-
 interface OwnProps {
 	tip : JSX.Element;
 	children : React.ReactNode; 

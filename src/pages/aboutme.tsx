@@ -1,13 +1,11 @@
 import * as React from "react"
-import styled, {keyframes} from "styled-components"
-import { motion } from "framer-motion"
+import styled from "styled-components"
 import type { HeadFC, PageProps } from "gatsby"
 
 import TitleBar from "../components/titlebar/index"
 import ToolTip from "../components/tooltips";
-
-
-
+import ContentBox from "../components/contentbox/";
+import BodyDiv from "../components/BoxBodyDiv/";
 
 const BgDiv = styled.div`
 height: 100%;
@@ -21,59 +19,29 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 `
-const SmDiv = styled(motion.div)`
-height: 0%;
-width: 50%;
-border: 5px solid #263D42;
-display:flex;
-flex-direction: column;
-justify-content: flex-start;
-align-items: center;
-overflow: hidden;
-`
 const Copy = styled.p`
 color: #263D42;
 font-family: "Work Sans";
 text-align: center;
 `
-const BodyContainer = styled.div`
-width: 90%;
-display: flex;
-flex-direction:column;
-justify-content: flex-start;
-flex-grow:1;
+const EmojiStyling = styled.p`
+margin-block-start: 0px;
+margin-block-end: 0px;
 `
-
-const TitleDiv = styled.div`
-width: 100%;
-`
-
-
-interface EmptyDivProps {
-  readonly height: number;
-}
-
-const EmptySpaceDiv = styled.div<EmptyDivProps>`
-  height: ${(props  : EmptyDivProps) => props.height}px;
-`
-
-
-
 const AboutPage: React.FC<PageProps> = () => {
   return (
 	  <BgDiv>
-		  <SmDiv animate = {{height:"30vw"}} transition = {{duration:1}}>
+		  <ContentBox animate = {{height:"auto"}} transition = {{duration:1}}>
 			  <TitleBar/>
-			  <BodyContainer>
+			  <BodyDiv>
 
-				  <Copy>Currently in <ToolTip tip="&#x1F3F4;&#xE0067;&#xE0062;&#xE0073;&#xE0063;&#xE0074;&#xE007F;">Edinburgh, Scotland</ToolTip></Copy>
+				  <Copy>Currently in <ToolTip tip={<EmojiStyling>&#x1F3F4;&#xE0067;&#xE0062;&#xE0073;&#xE0063;&#xE0074;&#xE007F;</EmojiStyling>}>Edinburgh, Scotland</ToolTip></Copy>
 				  <Copy>
 	  I have extensive experience in full stack development and am currently learning about low-latency networking and storage. Any discussions about team planning, optimisation, and management are welcome! </Copy>
-			  <Copy> Outside of work you can find <ToolTip tip="&#x1F94A;">kickboxing</ToolTip>, dancing <ToolTip tip="&#x1F483;">bachata & sala</ToolTip>, or <ToolTip tip="&#x1F440;">people watching.</ToolTip> </Copy>
-			  <EmptySpaceDiv height={66}/>
+			  <Copy> Outside of work you can find <ToolTip tip={<EmojiStyling>&#x1F94A;</EmojiStyling>}>kickboxing</ToolTip>, dancing <ToolTip tip={<EmojiStyling>&#x1F483;</EmojiStyling>}>bachata & salsa</ToolTip></Copy>
 
-			  </BodyContainer>
-		  </SmDiv>
+			  </BodyDiv>
+		  </ContentBox>
 
 	  </BgDiv>
   )
