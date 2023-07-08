@@ -37,6 +37,7 @@ flex-direction: column;
 justify-content: flex-start;
 align-items: center;
 overflow: scroll;
+max-height: 90%;
 `
 
 const BodyContainer = styled.div`
@@ -85,6 +86,32 @@ font-size: 12px;
 margin-block-start:0em;
 margin-block-end:.5em;
 `
+const ToolTipText = styled.p`
+color: #FFFFFF;
+font-family: "Work Sans";
+text-align: center;
+font-size: 10px;
+margin-block-start: 0px;
+margin-block-end: 0px;
+`
+
+const RelevantCourseList = styled.ul`
+margin-block-start: 0px;
+color: #FFFFFF;
+margin: 0;
+padding 0;
+
+& > li {
+margin: 0;
+padding 0;
+}
+`
+const RelevantCoursesDiv = styled.div`
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+`
+
 
 const TextDiv = styled.div`
 display:flex;
@@ -115,14 +142,14 @@ const ResumePage: React.FC<PageProps> = () => {
 				<TitleBar />
 				<BodyContainer>
                                   <HeaderDiv><HeaderCopy>Work - </HeaderCopy></HeaderDiv>
-                                  <SubHeaderDiv><SubHeaderCopy>CALA Fashion</SubHeaderCopy></SubHeaderDiv>
+                                  <SubHeaderDiv><SubHeaderCopy>Intern, CALA Fashion, 2022 March-Dec</SubHeaderCopy></SubHeaderDiv>
                                     <CustomList>
                                       <li><TextCopy>Worked extensively in <ToolTip tip={<ToolTipIcon src={typescript}/>}>TypeScript</ToolTip> touching most parts of the front and back-end pushing out 30+ tickets to production along with implementing rigorous unit and integration tests.</TextCopy></li>
                                       <li><TextCopy>Implemented <ToolTip tip={<ToolTipIcon src={vim}/>}>Vim</ToolTip>-style Keyboard shortcut 'melodies' enhancing user-experience</TextCopy></li>
                                       <li><TextCopy>Implemented <ToolTip tip={<ToolTipIcon src={stripe}/>}>Stripe</ToolTip> Webhooks to improve subscription management</TextCopy></li>
                                       <li><TextCopy>Took product ownership for automatically generating product barcodes within the Web App. I was involved with everything from initial product management to the finally deployment to production. </TextCopy></li>
                                     </CustomList>
-                                  <SubHeaderDiv><SubHeaderCopy>JP Morgan and Chase</SubHeaderCopy></SubHeaderDiv>
+                                  <SubHeaderDiv><SubHeaderCopy>Summer Analyst, JP Morgan and Chase, 2021 Jun-Aug</SubHeaderCopy></SubHeaderDiv>
                                     <CustomList>
                                       <li><TextCopy>Migrated an Enterprise Finance (<ToolTip tip ={<ToolTipIcon src={spring}/>}>Spring </ToolTip>Boot) Application from the Corporate Investment Bank
                                       onto JP Morgans internally hosted cloud using <ToolTip tip ={<ToolTipIcon src={docker}/>}>Docker</ToolTip> and <ToolTip tip ={<ToolTipIcon src={kubernetes}/>}>Kubernetes</ToolTip></TextCopy></li>
@@ -130,11 +157,23 @@ const ResumePage: React.FC<PageProps> = () => {
                                       <li><TextCopy>Wrote extensive documentation to support future migration to the cloud in the whole middle-office division</TextCopy></li>
                                     </CustomList>
                                   <HeaderDiv><HeaderCopy>Education - </HeaderCopy></HeaderDiv>
-                                  <SubHeaderDiv><SubHeaderCopy>University of Edinburgh: MRes Computer Science, 2023-2024</SubHeaderCopy></SubHeaderDiv>
+                                  <SubHeaderDiv><SubHeaderCopy>University of Edinburgh: MRes Computer Science, 2023-Present</SubHeaderCopy></SubHeaderDiv>
                                   <CustomList>
                                   <li><TextCopy>Working on implementing the Homa protocol over NVMe/TCP with Michio Honda in the ICSA department </TextCopy></li>
                                   </CustomList>
-                                  <SubHeaderDiv><SubHeaderCopy>University of Edinburgh: BSc AI & CS, 2018-2022</SubHeaderCopy></SubHeaderDiv>
+                                  <SubHeaderDiv><SubHeaderCopy><ToolTip tip ={
+                                  <RelevantCoursesDiv>
+                                   <ToolTipText>Relevant Courses:</ToolTipText>
+                                    <ToolTipText>-Algorithms and Data Structures</ToolTipText>
+                                    <ToolTipText>-Communications and Networks</ToolTipText>
+                                    <ToolTipText>-Introduction to Applied Machine Learning</ToolTipText>
+                                    <ToolTipText>-Foundations of Natural Language Processing</ToolTipText>
+                                    <ToolTipText>-Object Oriented Programming</ToolTipText>
+                                    <ToolTipText>-Software Testing</ToolTipText>
+                                    <ToolTipText>-Functional Programming</ToolTipText>
+                                  </RelevantCoursesDiv>
+                                  }
+          >University of Edinburgh:</ToolTip> BSc AI & CS, 2018-2022</SubHeaderCopy></SubHeaderDiv>
                                   <CustomList>
                                   <li><TextCopy>Dissertation: Extensive evaluation of state-of-the-art networking stacks, supervised by Michio Honda</TextCopy></li>
                                   </CustomList>

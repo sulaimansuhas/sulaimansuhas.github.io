@@ -67,6 +67,14 @@ display:flex;
 flex-direction:row;
 align-items: center;
 `
+const ToolTipText = styled.p`
+color: #FFFFFF;
+font-family: "Work Sans";
+text-align: center;
+font-size: 10px;
+margin-block-start: 0px;
+margin-block-end: 0px;
+`
 
 const clickToCopyText: string = "Click to copy";
 
@@ -83,7 +91,7 @@ const ContactPage: React.FC<PageProps> = () => {
 				<BodyContainer>
 					<Copy
 					> Find/Contact me at:</Copy>
-					<IconTextDiv><UnstyledLink href={"mailto:"+email}><Copy> {email} </Copy></UnstyledLink><ToolTip tip={CopyTipText}><IconContainment><IconNextToText src={copy} onClick={()=>{
+					<IconTextDiv><UnstyledLink href={"mailto:"+email}><Copy> {email} </Copy></UnstyledLink><ToolTip tip={<ToolTipText>{CopyTipText}</ToolTipText>}><IconContainment><IconNextToText src={copy} onClick={()=>{
 					    setCopyTipText("Copied!");
 					    navigator.clipboard.writeText(email);
 					}}

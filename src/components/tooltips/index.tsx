@@ -53,21 +53,13 @@ margin-block-end: 0px;
 `
 
 interface OwnProps {
-	tip : String | JSX.Element;
+	tip : JSX.Element;
 	children : React.ReactNode; 
 }
 
 export default function ToolTip(props: OwnProps): JSX.Element | null{
 	const {children, tip} = props;
 
-	if (typeof tip === "string"){
-	return(
-		<ParentSpan>
-			<TextSpan>{children}</TextSpan>
-		<FloatingTip><ToolTipText>{tip}</ToolTipText></FloatingTip>
-		</ParentSpan>
-	);
-	}
 	return(
 		<ParentSpan>
 			<TextSpan>{children}</TextSpan>
