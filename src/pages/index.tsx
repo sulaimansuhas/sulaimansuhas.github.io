@@ -59,7 +59,6 @@ font-family: "Work Sans";
 
 const IndexPage: React.FC<PageProps> = () => {
 	const [activeMainPageAnimation, activateMainPageAnimation] = React.useState(false);
-	console.log(activeMainPageAnimation);
   return (
 	  <>
 		  <GlobalStyle/>
@@ -70,10 +69,8 @@ const IndexPage: React.FC<PageProps> = () => {
 		  >
   <HeaderFont animate = {{y : activeMainPageAnimation ? -100 : 0}}>Suhas Narreddy</HeaderFont>
   <IconContainer 
-	  initial = {{ opacity: 0 }}
-	  animate = {{ 
-		       opacity: activeMainPageAnimation ? 1 : 0
-  }}>
+	  initial = {{ opacity: 1 }}
+	  animate = {{ opacity: 1 }}>
        <UnstyledLocalLink to="/aboutme">
 	       <IconContainment>
 		       <img src={about} alt="this is about icon" />

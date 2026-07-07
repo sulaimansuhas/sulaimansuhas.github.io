@@ -39,7 +39,6 @@ font-weight: bolder;
 export default function TitleBar (): JSX.Element | null {
   const location = useLocation();
 
-  console.log(location.pathname); // Current page route
 	return(
 		<>
 			<ContainingDiv>
@@ -51,4 +50,3 @@ export default function TitleBar (): JSX.Element | null {
 			</>
 		);
 }
-
