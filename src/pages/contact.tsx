@@ -1,93 +1,138 @@
+import BgDiv from "../components/page-frame"
 import * as React from "react"
 import styled from "styled-components"
 import type { HeadFC, PageProps } from "gatsby"
 
 import TitleBar from "../components/titlebar/index"
-import ToolTip from "../components/tooltips";
 import UnstyledLink from "../components/UnstyledLink" 
-import IconContainment from "../components/icons/icon-container"
+import linkedin from "../assets/icons/linkedin.svg"
+import github from "../assets/icons/github.svg"
 import ContentBox from "../components/contentbox/";
 import BodyDiv from "../components/BoxBodyDiv/";
 
 
-import linkedin from "../assets/icons/linkedin.svg"
-import github from "../assets/icons/github.svg"
-import copy from "../assets/icons/copy_icon.svg"
+import PixelIcon from "../components/icons/pixel-icon"
 
 
 const BodyDivCentered = styled(BodyDiv)`
 align-items:center;
 `
 
-const BgDiv = styled.div`
-height: 100%;
-width: 100%;
-position: fixed;
-top:0;
-left: 0;
-background-color: #80CED7;
-display:flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-`
+
 const Copy = styled.p`
-color: #263D42;
+font-size: 17px;
+line-height: 1.75;
+color: var(--site-ink);
 font-family: "Work Sans";
 text-align: center;
 `
-const Icon = styled.img`
-height: 50px;
-width: 50px;
-margin: 16px;
+const SocialLinks = styled.div`
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 16px 32px;
+margin-top: 12px;
 `
-
-const IconNextToText = styled.img`
-height:16px;
-width:16px;
-margin-left:4px;
+const SocialLink = styled(UnstyledLink)`
+display: inline-flex;
+align-items: center;
+gap: 10px;
+min-height: 44px;
+color: var(--site-ink);
+font: 16px/1.5 "Work Sans", sans-serif;
+& img {
+width: 24px;
+height: 24px;
+object-fit: contain;
+filter: var(--site-icon-filter);
+}
+&:hover .social-label, &:focus-visible .social-label {
+text-decoration: underline;
+text-underline-offset: 5px;
+text-decoration-thickness: 1px;
+}
+&:focus-visible {
+outline: 2px solid var(--site-ink);
+outline-offset: 5px;
+}
 `
 
 const IconTextDiv = styled.div`
 display:flex;
 flex-direction:row;
 align-items: center;
+flex-wrap: wrap;
+justify-content: center;
 `
-const ToolTipText = styled.p`
-color: #FFFFFF;
-font-family: "Work Sans";
+const CopyButton = styled.button`
+width: 44px;
+height: 44px;
+flex-shrink: 0;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+border: 0;
+background: transparent;
+color: var(--site-ink);
+cursor: pointer;
+&:hover { opacity: 0.75; }
+&:focus-visible { outline: 2px solid var(--site-ink); outline-offset: 3px; }
+`
+const CopyStatus = styled.p`
+min-height: 1.5em;
+margin: 0;
+font: 14px/1.5 "Work Sans", sans-serif;
+color: var(--site-muted);
 text-align: center;
-font-size: 10px;
-margin-block-start: 0px;
-margin-block-end: 0px;
 `
-
-const clickToCopyText: string = "Click to copy";
 
 const email: string = "suhasnarreddy@gmail.com";
 
 
 
 const ContactPage: React.FC<PageProps> = () => {
-	const [CopyTipText,setCopyTipText] = React.useState(clickToCopyText);
+	const [status, setStatus] = React.useState("");
+  const [copying, setCopying] = React.useState(false);
+  const resetTimer = React.useRef<ReturnType<typeof setTimeout>>();
+  React.useEffect(() => () => clearTimeout(resetTimer.current), []);
+  const copyEmail = async () => {
+    clearTimeout(resetTimer.current);
+    setStatus("");
+    setCopying(true);
+    try {
+      await navigator.clipboard.writeText(email);
+      setStatus("Copied!");
+      resetTimer.current = setTimeout(() => setStatus(""), 3000);
+    } catch {
+      setStatus("Couldn’t copy. Select the email address and copy it manually.");
+    } finally {
+      setCopying(false);
+    }
+  };
 	return (
 		<BgDiv>
-			<ContentBox animate={{ height: "auto" }} transition={{ duration: 1 }}>
+			<ContentBox>
 				<TitleBar />
 				<BodyDivCentered>
 					<Copy
 					> Find/Contact me at:</Copy>
-					<IconTextDiv><UnstyledLink href={"mailto:"+email}><Copy> {email} </Copy></UnstyledLink><ToolTip tip={<ToolTipText>{CopyTipText}</ToolTipText>}><IconContainment><IconNextToText src={copy} onClick={()=>{
-					    setCopyTipText("Copied!");
-					    navigator.clipboard.writeText(email);
-					}}
-					onMouseLeave={()=>{
-							setCopyTipText(clickToCopyText);
-						}
-					}
-					/></IconContainment></ToolTip></IconTextDiv>
-					<UnstyledLink href="https://www.linkedin.com/in/suhas-narreddy-877702202/"><IconContainment><Icon src={linkedin} alt="this is about icon" /></IconContainment></UnstyledLink>
-					<UnstyledLink href="https://github.com/sulaimansuhas"><IconContainment><Icon src={github} alt="this is about icon" /></IconContainment></UnstyledLink>
+					<IconTextDiv>
+            <UnstyledLink href={"mailto:" + email}><Copy>{email}</Copy></UnstyledLink>
+            <CopyButton type="button" aria-label="Copy email address" onClick={copyEmail} disabled={copying}>
+              <PixelIcon name="copy" size={32} />
+            </CopyButton>
+          </IconTextDiv>
+          <CopyStatus role="status" aria-live="polite" aria-atomic="true">{status}</CopyStatus>
+          <SocialLinks>
+            <SocialLink href="https://github.com/sulaimansuhas">
+              <img src={github} alt="" width={24} height={24} />
+              <span className="social-label">GitHub</span>
+            </SocialLink>
+            <SocialLink href="https://www.linkedin.com/in/suhas-narreddy-877702202/">
+              <img src={linkedin} alt="" width={24} height={24} />
+              <span className="social-label">LinkedIn</span>
+            </SocialLink>
+          </SocialLinks>
 				</BodyDivCentered>
 			</ContentBox>
 
@@ -97,4 +142,4 @@ const ContactPage: React.FC<PageProps> = () => {
 
 export default ContactPage
 
-export const Head: HeadFC = () => <title>Contact Page</title>
+export const Head: HeadFC = () => <title>Contact · Suhas Narreddy</title>

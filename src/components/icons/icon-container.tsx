@@ -1,6 +1,5 @@
 import * as React from "react"
 import styled from "styled-components"
-import { motion } from "framer-motion"
 
 
 interface OwnProps {
@@ -8,24 +7,41 @@ interface OwnProps {
 }
 
 
-const Container = styled(motion.div)`
+const Container = styled.div`
 display:flex;
 flex-direction:column;
+align-items:center;
+width: 72px;
+transition: transform 160ms ease-out;
+
+&:hover,
+a:focus-visible & {
+transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+transition: none;
+&:hover,
+a:focus-visible & {
+transform: none;
+}
+}
+
+& img {
+height: 48px;
+width: 48px;
+object-fit: contain;
+filter: var(--site-icon-filter);
+display: block;
+}
 `
 
 
 
 export default function IconContainer(props: OwnProps): JSX.Element | null{
 	return(
-		<Container
-			  whileHover={{
-    scale: 1.2,
-			  }}
-
-		>
+		<Container>
 			{props.children}
 		</Container>
 	);
 }
-
-

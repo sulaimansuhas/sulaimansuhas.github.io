@@ -21,7 +21,7 @@ const config: GatsbyConfig = {
           },
           {
             name: `Work Sans`,
-            file: `https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400&display=swap`,
+            file: `https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap`,
           },
         ],
       },

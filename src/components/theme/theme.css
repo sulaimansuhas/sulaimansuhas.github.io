@@ -1,0 +1,84 @@
+/* Animate the shared palette so every surface and text colour stays in sync. */
+@property --site-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #DCE6D5;
+}
+@property --site-ink {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #253C32;
+}
+@property --site-muted {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #52664F;
+}
+@property --site-surface {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #EDF2E9;
+}
+
+:root {
+  color-scheme: light;
+  --site-bg: #DCE6D5;
+  --site-ink: #253C32;
+  --site-muted: #52664F;
+  --site-surface: #EDF2E9;
+  --site-icon-filter: brightness(0) saturate(100%) invert(20%) sepia(15%) saturate(873%) hue-rotate(99deg) brightness(94%) contrast(90%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --site-bg: #192A32;
+    --site-ink: #D8E7E8;
+    --site-muted: #A6BEC1;
+    --site-surface: #263D46;
+    --site-icon-filter: brightness(0) saturate(100%) invert(94%) sepia(8%) saturate(344%) hue-rotate(135deg) brightness(97%) contrast(91%);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --site-bg: #192A32;
+  --site-ink: #D8E7E8;
+  --site-muted: #A6BEC1;
+  --site-surface: #263D46;
+  --site-icon-filter: brightness(0) saturate(100%) invert(94%) sepia(8%) saturate(344%) hue-rotate(135deg) brightness(97%) contrast(91%);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--site-bg); color: var(--site-ink); }
+a:focus-visible { outline: 2px solid var(--site-ink); outline-offset: 5px; }
+a { color: inherit; }
+.theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--site-ink);
+  font: 400 22px "Work Sans", sans-serif;
+  cursor: pointer;
+}
+.theme-toggle:hover { color: var(--site-muted); }
+.theme-toggle:focus-visible { outline: 3px solid var(--site-ink); outline-offset: 4px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  :root[data-theme-ready] {
+    transition: --site-bg 450ms ease-out, --site-ink 450ms ease-out,
+      --site-muted 450ms ease-out, --site-surface 450ms ease-out;
+  }
+  :root[data-theme-ready] img {
+    transition: filter 450ms ease-out;
+  }
+}
