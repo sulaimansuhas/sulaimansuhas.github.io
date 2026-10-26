@@ -1,4 +1,5 @@
 import path from "path"
+import fs from "fs"
 import type { GatsbyNode } from "gatsby"
 
 const toSlug = (value: string): string =>
@@ -142,5 +143,25 @@ export const createPages: GatsbyNode["createPages"] = async ({
         date: post.frontmatter.date,
       },
     })
+  })
+}
+
+// The resume page gets the resolved resume (fetched by scripts/fetch-resume.sh)
+// through its page context, or null when the file is absent.
+export const onCreatePage: GatsbyNode["onCreatePage"] = ({ page, actions }) => {
+  if (page.path !== "/resume/") {
+    return
+  }
+
+  const file = path.resolve("./content/resume/resume.json")
+  let resume: unknown = null
+  if (fs.existsSync(file)) {
+    resume = JSON.parse(fs.readFileSync(file, "utf8"))
+  }
+
+  actions.deletePage(page)
+  actions.createPage({
+    ...page,
+    context: { ...page.context, resume },
   })
 }

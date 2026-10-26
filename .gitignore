@@ -3,3 +3,7 @@ node_modules/
 public
 src/gatsby-types.d.ts
 .DS_Store
+
+# Fetched from resume-repo by scripts/fetch-resume.sh
+static/resume.pdf
+content/resume/resume.json

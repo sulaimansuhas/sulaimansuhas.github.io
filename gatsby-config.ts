@@ -34,13 +34,6 @@ const config: GatsbyConfig = {
         path: `${__dirname}/content/blog`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `resume`,
-        path: `${__dirname}/content/resume`,
-      },
-    },
     `gatsby-transformer-remark`,
   ]
 }

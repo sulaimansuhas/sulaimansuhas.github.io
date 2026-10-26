@@ -16,7 +16,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
-    "deploy": "gatsby build && gh-pages -d public -b main"
+    "fetch-resume": "./scripts/fetch-resume.sh",
+    "prebuild": "./scripts/fetch-resume.sh"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^2.1.3",

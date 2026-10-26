@@ -82,3 +82,16 @@ a { color: inherit; }
     transition: filter 450ms ease-out;
   }
 }
+
+@media print {
+  :root, :root[data-theme="dark"] {
+    --site-bg: #fff;
+    --site-ink: #000;
+    --site-muted: #333;
+    --site-surface: #fff;
+  }
+  body { background: #fff; }
+  .theme-toggle { display: none; }
+  main { padding: 0; min-height: 0; }
+  main > div { border: none !important; max-width: none; }
+}
