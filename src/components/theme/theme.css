@@ -95,3 +95,12 @@ a { color: inherit; }
   main { padding: 0; min-height: 0; }
   main > div { border: none !important; max-width: none; }
 }
+
+:root[data-theme="dark"] { --night-stars: visible; }
+:root[data-theme="light"] { --night-stars: hidden; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --night-stars: visible; }
+}
+
+/* Keep routed content above the persistent decorative sky. */
+#gatsby-focus-wrapper { position: relative; z-index: 1; }

@@ -1,6 +1,7 @@
 import * as React from "react"
 import type { GatsbyBrowser } from "gatsby"
 import "./theme.css"
+import Sky from "../sky"
 
 const storageKey = "chez-moi-theme"
 type Theme = "light" | "dark"
@@ -82,6 +83,7 @@ function ThemeControl({ children }: { children: React.ReactNode }) {
   }
 
   return <>
+    <Sky />
     {children}
     <button className="theme-toggle" type="button" onClick={toggle}
       aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}

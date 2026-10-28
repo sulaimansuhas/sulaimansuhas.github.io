@@ -19,6 +19,7 @@ justify-content: center;
 padding: 100px 24px 64px;
 `
 const SmDiv = styled(OpeningBox)`
+background: var(--site-bg);
 width: 100%;
 max-width: 760px;
 border: 1px solid var(--site-muted);
