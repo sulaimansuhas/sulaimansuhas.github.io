@@ -5,6 +5,9 @@ on:
     branches: [master]
   # Also started by the resume-repo build workflow after it publishes a release.
   workflow_dispatch:
+  # Pick up pushed Obsidian changes without requiring a website commit.
+  schedule:
+    - cron: '17 * * * *'
 
 permissions:
   contents: read
@@ -33,6 +36,35 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.RESUME_TOKEN }}
         run: ./scripts/fetch-resume.sh
+
+      - name: Check vault access configuration
+        env:
+          MORIA_TOKEN: ${{ secrets.MORIA_TOKEN }}
+        run: |
+          if [ -z "$MORIA_TOKEN" ]; then
+            echo "::error::Add MORIA_TOKEN with read-only Contents access to sulaimansuhas/Moria."
+            exit 1
+          fi
+
+      - name: Fetch shelf collections
+        uses: actions/checkout@v4
+        with:
+          repository: sulaimansuhas/Moria
+          ref: main
+          token: ${{ secrets.MORIA_TOKEN }}
+          path: .shelf-vault
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /ReadingList/Books/*.md
+            /WatchingList/Movies/*.md
+
+      - name: Import books and films
+        run: npm run import-shelf
+
+      - name: Remove temporary vault checkout
+        if: always()
+        run: rm -rf -- .shelf-vault
 
       - name: Build
         run: npx gatsby build

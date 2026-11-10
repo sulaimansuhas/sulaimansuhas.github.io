@@ -7,3 +7,6 @@ src/gatsby-types.d.ts
 # Fetched from resume-repo by scripts/fetch-resume.sh
 static/resume.pdf
 content/resume/resume.json
+
+# Temporary private collection checkout used by CI
+.shelf-vault/
