@@ -28,6 +28,14 @@ function AnimatedBox({ children, className }: OpeningBoxProps) {
     const ramp = Math.min(RAMP_SECONDS, height / EXPANSION_PIXELS_PER_SECOND)
     const duration = height / EXPANSION_PIXELS_PER_SECOND + ramp / 2
     const rampDistance = EXPANSION_PIXELS_PER_SECOND * ramp / 2
+    // Server-rendered content stays open until JavaScript can animate it.
+    // Always release the height, even if an animation fails to complete.
+    const reveal = () => {
+      controls.stop()
+      controls.set({ height: "auto", overflow: "visible" })
+    }
+    const fallback = window.setTimeout(reveal, duration * 1000 + 250)
+    controls.set({ height: 0, overflow: "hidden" })
     void controls.start({
       height: [0, height - rampDistance, height],
       overflow: "hidden",
@@ -37,16 +45,21 @@ function AnimatedBox({ children, className }: OpeningBoxProps) {
         ease: ["linear", [1 / 3, 2 / 3, 2 / 3, 1]],
       },
       transitionEnd: { height: "auto", overflow: "visible" },
-    })
-    return () => controls.stop()
+    }).then(() => {
+      window.clearTimeout(fallback)
+      reveal()
+    }).catch(reveal)
+    return () => {
+      window.clearTimeout(fallback)
+      controls.stop()
+    }
   }, [controls, reducedMotion])
 
   return (
     <motion.div
       className={className}
-      initial={reducedMotion ? false : { height: 0 }}
+      initial={false}
       animate={controls}
-      style={{ overflow: "hidden" }}
     >
       <div ref={content}>{children}</div>
     </motion.div>
